@@ -1,0 +1,37 @@
+<!-- templates/pet_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Pets List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Birth Date</th>
+            <th>Owner</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pet in pets %}
+        <tr>
+            <td>
+                <a href="{% url 'pet-detail' pet.id %}">{{ pet.name }}</a>
+            </td>
+            <td>{{ pet.species }}</td>
+            <td>{{ pet.birth_date }}</td>
+            <td>{{ pet.owner.name }}</td>
+            <td>
+                <div class="btn-group" style="gap: 6px;">
+                    <a href="{% url 'pet-detail' pet.id %}" class="btn btn-outline-info btn-sm">View</a>
+                    <a href="{% url 'pet-edit' pet.id %}" class="btn btn-outline-primary btn-sm">Edit</a>
+                    <a href="{% url 'pet-delete' pet.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-primary mt-3" href="{% url 'pet-create' %}">Add Pet</a>
+{% endblock %}

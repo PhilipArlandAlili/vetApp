@@ -1,0 +1,16 @@
+<!-- templates/veterinarian_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Veterinarian Details</h2>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ veterinarian.name }}</h5>
+        <p class="card-text">Email: {{ veterinarian.email }}</p>
+        <p class="card-text">Specialty: {{ veterinarian.specialty }}</p>
+        <!-- Add more details here as needed -->
+    </div>
+</div>
+<a class="btn btn-primary mt-3" href="{% url 'veterinarian-list' %}">Back to Veterinarians List</a>
+<a class="btn btn-secondary mt-3" href="{% url 'veterinarian-appointment-list' veterinarian.id %}">View Appointments</a>
+{% endblock %}

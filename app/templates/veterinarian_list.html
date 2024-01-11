@@ -1,0 +1,38 @@
+<!-- templates/veterinarian_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Veterinarians List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Specialty</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for veterinarian in veterinarians %}
+        <tr>
+            <td>
+                <a href="{% url 'veterinarian-detail' veterinarian.id %}">{{ veterinarian.name }}</a>
+            </td>
+            <td>{{ veterinarian.email }}</td>
+            <td>{{ veterinarian.specialty }}</td>
+            <td>
+                <div class="btn-group" style="gap: 6px;">
+                    <a href="{% url 'veterinarian-detail' veterinarian.id %}"
+                        class="btn btn-outline-info btn-sm">View</a>
+                    <a href="{% url 'veterinarian-edit' veterinarian.id %}"
+                        class="btn btn-outline-primary btn-sm">Edit</a>
+                    <a href="{% url 'veterinarian-delete' veterinarian.id %}"
+                        class="btn btn-outline-danger btn-sm">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-primary mt-3" href="{% url 'veterinarian-create' %}">Add Veterinarian</a>
+{% endblock %}

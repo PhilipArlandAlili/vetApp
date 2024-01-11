@@ -1,0 +1,40 @@
+<!-- templates/medical_record_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Medical Records List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Diagnosis</th>
+            <th>Treatment</th>
+            <th>Cost</th>
+            <th>Appointment</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for medical_record in medical_records %}
+        <tr>
+            <td>
+                <a href="{% url 'medical-record-detail' medical_record.id %}">{{ medical_record.diagnosis }}</a>
+            </td>
+            <td>{{ medical_record.treatment }}</td>
+            <td>{{ medical_record.cost }}</td>
+            <td>{{ medical_record.appointment.date }}</td>
+            <td>
+                <div class="btn-group" style="gap: 6px;">
+                    <a href="{% url 'medical-record-detail' medical_record.id %}"
+                        class="btn btn-outline-info btn-sm">View</a>
+                    <a href="{% url 'medical-record-edit' medical_record.id %}"
+                        class="btn btn-outline-primary btn-sm">Edit</a>
+                    <a href="{% url 'medical-record-delete' medical_record.id %}"
+                        class="btn btn-outline-danger btn-sm">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-primary mt-3" href="{% url 'medical-record-create' %}">Add Medical Record</a>
+{% endblock %}

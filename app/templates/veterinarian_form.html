@@ -1,0 +1,12 @@
+<!-- templates/veterinarian_form.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">{% if form.instance.pk %}Edit{% else %}Add{% endif %} Veterinarian</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<a class="btn btn-secondary mt-3" href="{% url 'veterinarian-list' %}">Cancel</a>
+{% endblock %}

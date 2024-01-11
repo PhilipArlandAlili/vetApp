@@ -1,0 +1,12 @@
+<!-- templates/owner_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Confirm Deletion</h2>
+<p>Are you sure you want to delete the owner "{{ owner.name }}"?</p>
+<form method="post" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+</form>
+<a class="btn btn-secondary" href="{% url 'owner-detail' owner.id %}">Cancel</a>
+{% endblock %}

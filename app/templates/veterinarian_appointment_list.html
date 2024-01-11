@@ -1,0 +1,15 @@
+<!-- templates/veterinarian_appointment_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Appointments for {{ veterinarian.name }}</h2>
+<ul class="list-group">
+    {% for appointment in veterinarian.appointments.all %}
+    <li class="list-group-item">
+        <a href="{% url 'appointment-detail' appointment.id %}">{{ appointment.date }}</a>
+        <span class="badge bg-secondary">{{ appointment.reason }}</span>
+    </li>
+    {% endfor %}
+</ul>
+<a class="btn btn-primary mt-3" href="{% url 'veterinarian-detail' veterinarian.id %}">Back to Veterinarian Details</a>
+{% endblock %}

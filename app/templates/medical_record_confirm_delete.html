@@ -1,0 +1,12 @@
+<!-- templates/medical_record_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Confirm Deletion</h2>
+<p>Are you sure you want to delete the medical record with diagnosis "{{ medical_record.diagnosis }}"?</p>
+<form method="post" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+</form>
+<a class="btn btn-secondary" href="{% url 'medical-record-detail' medical_record.id %}">Cancel</a>
+{% endblock %}

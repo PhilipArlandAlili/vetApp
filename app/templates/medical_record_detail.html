@@ -1,0 +1,17 @@
+<!-- templates/medical_record_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Medical Record Details</h2>
+<div class="card">
+    <div class="card-body">
+        <p class="card-text">Diagnosis: {{ medical_record.diagnosis }}</p>
+        <p class="card-text">Treatment: {{ medical_record.treatment }}</p>
+        <p class="card-text">Cost: {{ medical_record.cost }}</p>
+        <p class="card-text">Appointment: <a href="{% url 'appointment-detail' medical_record.appointment.id %}">{{
+                medical_record.appointment.date }}</a></p>
+        <!-- Add more details here as needed -->
+    </div>
+</div>
+<a class="btn btn-primary mt-3" href="{% url 'medical-record-list' %}">Back to Medical Records List</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!-- templates/pet_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Pet Details</h2>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ pet.name }}</h5>
+        <p class="card-text">Species: {{ pet.species }}</p>
+        <p class="card-text">Birth Date: {{ pet.birth_date }}</p>
+        <p class="card-text">Owner: <a href="{% url 'owner-detail' pet.owner.id %}">{{ pet.owner.name }}</a></p>
+        <!-- Add more details here as needed -->
+    </div>
+</div>
+<a class="btn btn-primary mt-3" href="{% url 'pet-list' %}">Back to Pets List</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!-- templates/appointment_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mt-4 mb-3">Appointment Details</h2>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ appointment.date }}</h5>
+        <p class="card-text">Reason: {{ appointment.reason }}</p>
+        <p class="card-text">Pet: <a href="{% url 'pet-detail' appointment.pet.id %}">{{ appointment.pet.name }}</a></p>
+        <!-- Add more details here as needed -->
+    </div>
+</div>
+<a class="btn btn-primary mt-3" href="{% url 'appointment-list' %}">Back to Appointments List</a>
+{% endblock %}
